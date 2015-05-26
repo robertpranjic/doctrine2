@@ -2262,7 +2262,7 @@ class UnitOfWork implements PropertyChangedListener
             $relatedEntities = $class->reflFields[$assoc['fieldName']]->getValue($entity);
 
             switch (true) {
-                case ($relatedEntities instanceof Collection):
+                case ($relatedEntities instanceof Collection || is_array($relatedEntities)):
                 case (is_array($relatedEntities)):
                     // If its a PersistentCollection initialization is intended! No unwrap!
                     foreach ($relatedEntities as $relatedEntity) {
